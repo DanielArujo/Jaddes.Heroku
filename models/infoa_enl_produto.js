@@ -26,12 +26,24 @@ export default class infoa_enl_produto extends Model {
         key: 'id_usuario'
       }
     },
-    ds_imagem: {
+    ds_imagem1: {
+      type: DataTypes.STRING(5000),
+      allowNull: false
+    },
+    ds_imagem2: {
+      type: DataTypes.STRING(5000),
+      allowNull: false
+    },
+    ds_imagem3: {
+      type: DataTypes.STRING(5000),
+      allowNull: false
+    },
+    ds_imagem4: {
       type: DataTypes.STRING(5000),
       allowNull: false
     },
     nm_produto: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(16),
       allowNull: false
     },
     vl_preco: {
