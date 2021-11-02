@@ -1,46 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tht_lugar extends Model {
+export default class infod_omn_curriculo extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_lugar: {
+    id_curriculo: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_lugar: {
-      type: DataTypes.STRING(100),
-      allowNull: true
-    },
-    ds_avaliacao: {
-      type: DataTypes.DECIMAL(10,5),
-      allowNull: true
-    },
-    ds_edereco: {
-      type: DataTypes.STRING(100),
-      allowNull: true
-    },
-    ds_imagem: {
+    ds_objetivo: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_informacao: {
-      type: DataTypes.STRING(100),
+    ds_formacao_academica: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    dt_dias: {
-      type: DataTypes.DATE,
+    ds_experiencia_profissional: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    dt_horario: {
-      type: DataTypes.DATE,
+    ds_idioma: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_atividade_complementar: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tht_lugar',
+    tableName: 'infod_omn_curriculo',
     timestamps: false,
     indexes: [
       {
@@ -48,11 +40,11 @@ export default class infoc_tht_lugar extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_lugar" },
+          { name: "id_curriculo" },
         ]
       },
     ]
   });
-  return infoc_tht_lugar;
+  return infod_omn_curriculo;
   }
 }

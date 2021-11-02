@@ -1,30 +1,26 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tht_chat extends Model {
+export default class infob_hdm_esqueci_senha_adm extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_mensagem: {
+    id_HDM_esqueci_senha: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_nome: {
-      type: DataTypes.STRING(10),
+    nr_HDM_senha_adm: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     },
-    ds_mensagem: {
-      type: DataTypes.STRING(100),
-      allowNull: true
-    },
-    dt_messagem: {
-      type: DataTypes.DATE,
+    nm_HDM_nova_senha_adm: {
+      type: DataTypes.STRING(50),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tht_chat',
+    tableName: 'infob_hdm_esqueci_senha_adm',
     timestamps: false,
     indexes: [
       {
@@ -32,11 +28,11 @@ export default class infoc_tht_chat extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_mensagem" },
+          { name: "id_HDM_esqueci_senha" },
         ]
       },
     ]
   });
-  return infoc_tht_chat;
+  return infob_hdm_esqueci_senha_adm;
   }
 }

@@ -1,30 +1,30 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tht_compra extends Model {
+export default class infob_mw_atores extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_compra: {
+    id_ator: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_pacote: {
+    id_filme: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    id_usuario: {
-      type: DataTypes.INTEGER,
+    nm_ator: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_aprovacao: {
-      type: DataTypes.BOOLEAN,
+    ds_princ_atores: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tht_compra',
+    tableName: 'infob_mw_atores',
     timestamps: false,
     indexes: [
       {
@@ -32,25 +32,18 @@ export default class infoc_tht_compra extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_compra" },
+          { name: "id_ator" },
         ]
       },
       {
-        name: "id_pacote",
+        name: "id_filme",
         using: "BTREE",
         fields: [
-          { name: "id_pacote" },
-        ]
-      },
-      {
-        name: "id_usuario",
-        using: "BTREE",
-        fields: [
-          { name: "id_usuario" },
+          { name: "id_filme" },
         ]
       },
     ]
   });
-  return infoc_tht_compra;
+  return infob_mw_atores;
   }
 }

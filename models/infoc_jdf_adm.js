@@ -1,46 +1,42 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tdv_cliente extends Model {
+export default class infoc_jdf_adm extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_cliente: {
+    id_adm: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_cliente: {
+    nm_funncionario: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_funcao: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_email: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_senhaEmail: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_cpf: {
-      type: DataTypes.STRING(15),
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_email: {
-      type: DataTypes.STRING(250),
-      allowNull: true
-    },
-    nr_contato: {
-      type: DataTypes.STRING(15),
-      allowNull: true
-    },
-    ds_senha: {
-      type: DataTypes.STRING(50),
-      allowNull: true
-    },
-    dt_nascimento: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    ds_codigo_rec: {
-      type: DataTypes.STRING(200),
+    nr_telefone: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tdv_cliente',
+    tableName: 'infoc_jdf_adm',
     timestamps: false,
     indexes: [
       {
@@ -48,11 +44,11 @@ export default class infoc_tdv_cliente extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_cliente" },
+          { name: "id_adm" },
         ]
       },
     ]
   });
-  return infoc_tdv_cliente;
+  return infoc_jdf_adm;
   }
 }

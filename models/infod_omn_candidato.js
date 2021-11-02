@@ -1,58 +1,62 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infob_mw_filme extends Model {
+export default class infod_omn_candidato extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_filme: {
+    id_candidato: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_filme: {
+    nm_candidato: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_genero: {
+    ds_email: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ano_lancamento: {
+    ds_senha: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    nm_diretor: {
+    ds_sexo: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_sinopse: {
-      type: DataTypes.STRING(800),
+    img_candidato: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_avaliacao: {
-      type: DataTypes.DECIMAL(10,2),
+    ds_nacionalidade: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_descricao: {
-      type: DataTypes.STRING(800),
+    ds_telefone: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_plataforma: {
-      type: DataTypes.STRING(500),
+    dt_nascimento: {
+      type: DataTypes.DATE,
       allowNull: true
     },
-    img_capa_maior: {
-      type: DataTypes.STRING(1000),
+    ds_estado_civil: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    img_capa_menor: {
-      type: DataTypes.STRING(1000),
+    ds_localidade: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    id_curriculo: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infob_mw_filme',
+    tableName: 'infod_omn_candidato',
     timestamps: false,
     indexes: [
       {
@@ -60,11 +64,18 @@ export default class infob_mw_filme extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_filme" },
+          { name: "id_candidato" },
+        ]
+      },
+      {
+        name: "id_curriculo",
+        using: "BTREE",
+        fields: [
+          { name: "id_curriculo" },
         ]
       },
     ]
   });
-  return infob_mw_filme;
+  return infod_omn_candidato;
   }
 }

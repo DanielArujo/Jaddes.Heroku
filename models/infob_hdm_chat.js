@@ -1,38 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infob_mw_comentario extends Model {
+export default class infob_hdm_chat extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_cometario: {
+    id_HDM_chat: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_filme: {
+    id_HDM_usuario: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    id_usuario: {
-      type: DataTypes.INTEGER,
+    ds_HDM_mensagem: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_mensagem: {
-      type: DataTypes.STRING(300),
+    nm_HDM_usuario: {
+      type: DataTypes.STRING(200),
       allowNull: true
     },
-    dt_comentario: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
-    },
-    ds_curtidas: {
-      type: DataTypes.INTEGER,
+    dt_HDM_data: {
+      type: DataTypes.DATE,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infob_mw_comentario',
+    tableName: 'infob_hdm_chat',
     timestamps: false,
     indexes: [
       {
@@ -40,25 +36,18 @@ export default class infob_mw_comentario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_cometario" },
+          { name: "id_HDM_chat" },
         ]
       },
       {
-        name: "id_filme",
+        name: "id_HDM_usuario",
         using: "BTREE",
         fields: [
-          { name: "id_filme" },
-        ]
-      },
-      {
-        name: "id_usuario",
-        using: "BTREE",
-        fields: [
-          { name: "id_usuario" },
+          { name: "id_HDM_usuario" },
         ]
       },
     ]
   });
-  return infob_mw_comentario;
+  return infob_hdm_chat;
   }
 }

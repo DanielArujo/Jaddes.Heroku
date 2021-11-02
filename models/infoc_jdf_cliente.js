@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tdv_cliente extends Model {
+export default class infoc_jdf_cliente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_cliente: {
@@ -10,37 +10,45 @@ export default class infoc_tdv_cliente extends Model {
       allowNull: false,
       primaryKey: true
     },
+    id_cartao: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'infoc_jdf_cartao',
+        key: 'id_cartao'
+      }
+    },
     nm_cliente: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_cpf: {
-      type: DataTypes.STRING(15),
+    nr_telefone: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_email: {
-      type: DataTypes.STRING(250),
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    nr_contato: {
-      type: DataTypes.STRING(15),
+    ds_senhaEmail: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_senha: {
-      type: DataTypes.STRING(50),
+    ds_endereco: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    dt_nascimento: {
-      type: DataTypes.DATE,
+    nr_endereco: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
-    ds_codigo_rec: {
-      type: DataTypes.STRING(200),
+    ds_complemento: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tdv_cliente',
+    tableName: 'infoc_jdf_cliente',
     timestamps: false,
     indexes: [
       {
@@ -51,8 +59,15 @@ export default class infoc_tdv_cliente extends Model {
           { name: "id_cliente" },
         ]
       },
+      {
+        name: "id_cartao",
+        using: "BTREE",
+        fields: [
+          { name: "id_cartao" },
+        ]
+      },
     ]
   });
-  return infoc_tdv_cliente;
+  return infoc_jdf_cliente;
   }
 }

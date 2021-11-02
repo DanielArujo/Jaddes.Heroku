@@ -1,34 +1,26 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_atn_tb_chat extends Model {
+export default class infod_omn_candidato_vaga extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_chat: {
+    id_candidato_vaga: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_sala: {
+    id_candidato: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    ds_mensagem: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    dt_mensagem: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    tp_enviado_por: {
-      type: DataTypes.STRING(100),
+    id_vaga: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_atn_tb_chat',
+    tableName: 'infod_omn_candidato_vaga',
     timestamps: false,
     indexes: [
       {
@@ -36,18 +28,25 @@ export default class infoc_atn_tb_chat extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_chat" },
+          { name: "id_candidato_vaga" },
         ]
       },
       {
-        name: "id_sala",
+        name: "id_candidato",
         using: "BTREE",
         fields: [
-          { name: "id_sala" },
+          { name: "id_candidato" },
+        ]
+      },
+      {
+        name: "id_vaga",
+        using: "BTREE",
+        fields: [
+          { name: "id_vaga" },
         ]
       },
     ]
   });
-  return infoc_atn_tb_chat;
+  return infod_omn_candidato_vaga;
   }
 }

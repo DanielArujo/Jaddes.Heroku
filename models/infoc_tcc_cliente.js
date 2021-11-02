@@ -1,46 +1,54 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tht_usuario extends Model {
+export default class infoc_tcc_cliente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_usuario: {
+    id_cliente: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_cartao: {
+    id_endereco: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_tcc_endereco',
+        key: 'id_endereco'
+      }
     },
-    nm_usuraio: {
-      type: DataTypes.STRING(30),
-      allowNull: true
-    },
-    nm_nick: {
-      type: DataTypes.STRING(10),
-      allowNull: true
-    },
-    ds_email: {
-      type: DataTypes.STRING(20),
-      allowNull: true
-    },
-    nr_cpf: {
-      type: DataTypes.INTEGER,
+    nm_cliente: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     dt_nascimento: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: true
     },
-    ds_senha: {
+    nr_celular: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_email: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_genero: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    nr_cpf: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    qtd_compra: {
       type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tht_usuario',
+    tableName: 'infoc_tcc_cliente',
     timestamps: false,
     indexes: [
       {
@@ -48,18 +56,18 @@ export default class infoc_tht_usuario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_cliente" },
         ]
       },
       {
-        name: "id_cartao",
+        name: "id_endereco",
         using: "BTREE",
         fields: [
-          { name: "id_cartao" },
+          { name: "id_endereco" },
         ]
       },
     ]
   });
-  return infoc_tht_usuario;
+  return infoc_tcc_cliente;
   }
 }
