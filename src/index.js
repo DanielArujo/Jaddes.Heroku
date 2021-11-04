@@ -1,4 +1,6 @@
-import produtoController from './controller/produtoController.js'
+import produtoController from './controller/produtoController.js';
+import clienteController from './controller/clienteController.js';
+
 
 import express from 'express';
 import cors from 'cors';
@@ -10,6 +12,8 @@ server.use(express.json());
 
 
 server.use('/produto', produtoController);
+server.use('/cliente', clienteController);
+
 
 
 server.listen(
