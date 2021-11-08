@@ -15,24 +15,6 @@ app.get('/', async(req, resp) => {
     }
 })
 
-app.get('/', async(req, resp) => {
-
-    try{
-
-        let { email, senha } = req.body;
-
-        let r = await db.infoc_jdf_cliente.findAll();
-
-        if (email || senha === null) {
-            return  resp.send({ erro: 'Cadastre-se antes' })
-        }
-
-        resp.send(r);
-
-    }catch (e){
-        resp.send(e.toString())
-    }
-})
 
 
 app.post('/', async(req, resp) => {
@@ -57,5 +39,26 @@ app.post('/', async(req, resp) => {
 
 })
 
+
+app.post('/login', async(req, resp) => {
+    
+        let { email, senha } = req.body;
+
+        let r = await db.infoc_jdf_cliente.findOne({
+            where:{
+                ds_email: email,
+                ds_senhaEmail: senha
+            },
+            raw:true
+        })
+        
+        if(r === null){
+            resp.send({
+                erro: "eRROUU"
+            })
+        }
+
+        resp.send(r)
+})
 
 export default app;
