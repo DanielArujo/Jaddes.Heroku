@@ -15,6 +15,25 @@ app.get('/', async(req, resp) => {
     }
 })
 
+app.get('/', async(req, resp) => {
+
+    try{
+
+        let { email, senha } = req.body;
+
+        let r = await db.infoc_jdf_cliente.findAll();
+
+        if (email || senha === null) {
+            return  resp.send({ erro: 'Cadastre-se antes' })
+        }
+
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
 
 app.post('/', async(req, resp) => {
     try{
