@@ -15,6 +15,21 @@ app.get('/', async(req, resp) => {
     }
 })
 
+app.get('/maisVendido', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                bt_maisVendidos: true
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
 
 app.post('/', async(req, resp) => {
 
