@@ -6,6 +6,7 @@ const app = Router();
 
 app.get('/', async(req, resp) => {
 
+
     try{
         let r = await db.infoc_jdf_produto.findAll();
         resp.send(r);
@@ -14,6 +15,8 @@ app.get('/', async(req, resp) => {
         resp.send(e.toString())
     }
 })
+
+
 
 app.get('/maisVendido', async(req, resp) => {
 
