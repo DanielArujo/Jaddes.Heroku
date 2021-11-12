@@ -236,6 +236,10 @@ app.post('/', async(req, resp) => {
 
         let { produto, valor, descricao, categoria, img, maisVendido, codigo } = req.body;
 
+        if(produto === '' || valor === '' || descricao === '' || categoria === '' || img === '' || codigo === ''){
+            return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
+        }
+
         let r = await db.infoc_jdf_produto.create({
             nm_produto: produto,
             vl_produto: valor,
