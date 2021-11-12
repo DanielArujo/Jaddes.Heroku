@@ -25,10 +25,10 @@ app.post('/', async(req, resp) => {
 
         let { nome, telefone, email, senha, endereco, numeroEndereco, complemento } = req.body;
 
-        if(nome === '' || telefone === '' || email === '' || senha === '' || endereco === '' || numeroEndereco === '' || complemento === ''){
+        if(nome === '' || telefone === '' || email === '' || senha === '' || endereco === '' || numeroEndereco === undefined){
             return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
         }
-
+        
         let r = await db.infoc_jdf_cliente.create({
             nm_cliente: nome,
             nr_telefone: telefone,
