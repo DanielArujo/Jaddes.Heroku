@@ -25,7 +25,7 @@ app.post('/', async(req, resp) => {
 
         let { nome, telefone, email, senha, endereco, numeroEndereco, complemento } = req.body;
 
-        if(nome == ''){
+        if(nome === '' || telefone === '' || email === '' || senha === '' || endereco === '' || numeroEndereco === '' || complemento === ''){
             return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
         }
 
@@ -63,7 +63,7 @@ app.post('/login', async(req, resp) => {
         
         if(r === null){
             resp.send({
-                erro: "eRROUU"
+                erro: "Credenciais Invalidas"
             })
         }
 
