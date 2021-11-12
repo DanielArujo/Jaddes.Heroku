@@ -68,6 +68,23 @@ app.post('/login', async(req, resp) => {
         }
 
         resp.send(r)
+
+
+        app.delete('/:id', async(req, resp) => {
+
+            try{
+                let { id } = req.params;
+        
+                await db.infoc_jdf_produto.destroy({
+                    where: {id_produto: id}
+                });
+                
+                resp.sendStatus(200);
+        
+            }catch (e){
+                resp.send(e.toString())
+            }
+        })  
 })
 
 export default app;
