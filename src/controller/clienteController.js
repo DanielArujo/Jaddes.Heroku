@@ -76,7 +76,7 @@ app.post('/login', async(req, resp) => {
                 let { id } = req.params;
         
                 await db.infoc_jdf_produto.destroy({
-                    where: {id_produto: id}
+                    where: {id_cliente: id}
                 });
                 
                 resp.sendStatus(200);
