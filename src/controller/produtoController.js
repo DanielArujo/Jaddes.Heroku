@@ -97,6 +97,85 @@ app.get('/pizzas', async(req, resp) => {
 
 
 
+app.get('/bebidas', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Bebidas"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+app.get('/cervejas', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Cervejas"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+app.get('/bebida-quente', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Bebidas Quentes"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+app.get('/sucos', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Sucos"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+app.get('/refri', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Refrigerante"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
 
 
 app.post('/', async(req, resp) => {
