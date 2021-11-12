@@ -66,9 +66,9 @@ app.post('/login', async(req, resp) => {
                 erro: "Credenciais Invalidas"
             })
         }
-
         resp.send(r)
-
+        
+    })  
 
         app.delete('/:id', async(req, resp) => {
 
@@ -85,6 +85,6 @@ app.post('/login', async(req, resp) => {
                 resp.send(e.toString())
             }
         })  
-})
+
 
 export default app;
