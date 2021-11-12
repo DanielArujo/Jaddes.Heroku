@@ -34,7 +34,7 @@ app.get('/maisVendido', async(req, resp) => {
 })
 
 
-app.get('/categoria-carne', async(req, resp) => {
+app.get('/carne', async(req, resp) => {
 
     try{
         let r = await db.infoc_jdf_produto.findAll({
