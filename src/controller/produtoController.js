@@ -50,12 +50,12 @@ app.get('/carne', async(req, resp) => {
 })
 
 
-app.get('/categoria-carne', async(req, resp) => {
+app.get('/salgados', async(req, resp) => {
 
     try{
         let r = await db.infoc_jdf_produto.findAll({
             where:{
-                ds_categoria:"Hambúrguer bovino"
+                ds_categoria:"Salgados"
             }
         });
         resp.send(r);
@@ -65,21 +65,6 @@ app.get('/categoria-carne', async(req, resp) => {
     }
 })
 
-
-app.get('/categoria-carne', async(req, resp) => {
-
-    try{
-        let r = await db.infoc_jdf_produto.findAll({
-            where:{
-                ds_categoria:"Hambúrguer bovino"
-            }
-        });
-        resp.send(r);
-
-    }catch (e){
-        resp.send(e.toString())
-    }
-})
 
 
 
