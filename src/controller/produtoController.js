@@ -65,6 +65,37 @@ app.get('/salgados', async(req, resp) => {
     }
 })
 
+app.get('/pasteis', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Pasteis"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+app.get('/pizzas', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Pizzas"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
 
 
 
