@@ -178,6 +178,58 @@ app.get('/refri', async(req, resp) => {
 
 
 
+app.get('/sorvete', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Sorvetes"
+            },
+            where:{
+                ds_categoria:"Sorvete"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+app.get('/churros', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Churros"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+
+app.get('/bolos', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_produto.findAll({
+            where:{
+                ds_categoria:"Bolos"
+            }
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
 app.post('/', async(req, resp) => {
 
     try{
