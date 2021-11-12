@@ -8,6 +8,9 @@ app.get('/', async(req, resp) => {
 
     try{
         let r = await db.infoc_jdf_cliente.findAll();
+
+
+
         resp.send(r);
 
     }catch (e){
@@ -22,6 +25,10 @@ app.post('/', async(req, resp) => {
 
         let { nome, telefone, email, senha, endereco, numeroEndereco, complemento } = req.body;
 
+        if(nome == '' || telefone === '' || email === '' || senha === '' || endereco === '' || numeroEndereco === '' || complemento === '' ){
+            return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
+        }
+
         let r = await db.infoc_jdf_cliente.create({
             nm_cliente: nome,
             nr_telefone: telefone,
@@ -31,6 +38,8 @@ app.post('/', async(req, resp) => {
             nr_endereco: numeroEndereco,
             ds_complemento: complemento
         });
+
+
         resp.send(r);
 
     }catch (e){
