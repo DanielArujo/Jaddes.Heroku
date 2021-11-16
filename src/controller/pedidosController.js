@@ -9,13 +9,65 @@ const app = Router();
 app.get('/', async(req, resp) => {
 
     try{
-        let r = await db.infoc_jdf_pedido.findAll();
+        let r = await db.infoc_jdf_item_pedido.findAll();
         resp.send(r);
 
     }catch (e){
         resp.send(e.toString())
     }
 })
+
+
+
+app.get('/pedidoss', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_pedido.findAll({
+            include: [
+                {
+                    model: db.infoc_jdf_item_pedido,
+                    as: "infoc_jdf_item_pedidos",
+                    required: true
+                }
+            ]
+
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
+app.get('/cliente', async(req, resp) => {
+
+    try{
+        let r = await db.infoc_jdf_cliente.findAll({
+            include: [
+                {
+                    model: db.infoc_jdf_pedido,
+                    as: "infoc_jdf_pedidos",
+                    required: true,
+                    include: [
+                        {
+                            model: db.infoc_jdf_item_pedido,
+                            as: "infoc_jdf_item_pedidos",
+                            required: true
+                        }
+                    ]
+                }
+            ]
+
+        });
+        resp.send(r);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})
+
+
 
 app.post('/', async(req, resp) => {
 
