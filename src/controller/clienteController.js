@@ -9,8 +9,6 @@ app.get('/', async(req, resp) => {
     try{
         let r = await db.infoc_jdf_cliente.findAll();
 
-
-
         resp.send(r);
 
     }catch (e){
@@ -69,6 +67,33 @@ app.post('/login', async(req, resp) => {
         resp.send(r)
 
     })  
+
+
+        app.put('/:id', async(req, resp) => {
+
+            try{
+                let { id } = req.params;
+                let { nome, telefone, email, senha, endereco, numeroEndereco, complemento } = req.body;
+        
+                await db.infoc_jdf_cliente.update({
+                    nm_cliente: nome,
+                    nr_telefone: telefone,
+                    ds_email: email,
+                    ds_senhaEmail: senha,
+                    ds_endereco: endereco,
+                    nr_endereco: numeroEndereco,
+                    ds_complemento: complemento
+                },
+                {
+                    where:{id_cliente: id}
+                });
+                
+                resp.sendStatus(200);
+        
+            }catch (e){
+                resp.send(e.toString())
+            }
+        })  
 
         app.delete('/:id', async(req, resp) => {
 
