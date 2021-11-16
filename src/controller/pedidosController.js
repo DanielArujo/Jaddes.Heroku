@@ -53,7 +53,7 @@ app.get('/cliente', async(req, resp) => {
                         {
                             model: db.infoc_jdf_item_pedido,
                             as: "infoc_jdf_item_pedidos",
-                            required: true
+                            required: false
                         }
                     ]
                 }
