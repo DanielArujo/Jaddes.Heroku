@@ -69,38 +69,6 @@ app.get('/cliente', async(req, resp) => {
 
 
 
-app.post('/', async(req, resp) => {
-
-    try{
-
-        let {idproduto, idcliente, formaPagamento, status } = req.body
-
-
-        const usuario = await db.infoc_jdf_cliente.findOne({
-            where:{id_cliente: idcliente}
-       })
-
-        const pedido = await db.infoc_jdf_pedido.create({
-            id_cliente: usuario.id_cliente,
-            ds_formaPagamento: formaPagamento,
-            ds_status: status
-        })
-
-        const produto = await db.infoc_jdf_produto.findOne({
-            where:{id_produto: idproduto}
-        })
-
-        const pedidoItem = await db.infoc_jdf_item_pedido.create({
-            id_pedido: pedido.id_pedido,
-            id_produto: produto.id_produto
-        })
-
-        resp.sendStatus(200);
-
-    }catch (e){
-        resp.send(e.toString())
-    }
-})
 
 
 app.post('/v2', async(req, resp) => {
@@ -143,6 +111,23 @@ app.post('/v2', async(req, resp) => {
         resp.send(e.toString())
     }
 })
+
+
+app.delete('/:id', async(req, resp) => {
+
+    try{
+        let { id } = req.params;
+
+        await db.infoc_jdf_pedido.destroy({
+            where: {id_cliente: id}
+        });
+        
+        resp.sendStatus(200);
+
+    }catch (e){
+        resp.send(e.toString())
+    }
+})  
 
 
 
