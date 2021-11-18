@@ -1,8 +1,6 @@
 import db from '../db.js'
 
 import express from 'express';
-import infoc_jdf_cliente from '../models/infoc_jdf_cliente.js';
-import infoc_jdf_pedido from '../models/infoc_jdf_pedido.js';
 const Router = express.Router;
 const app = Router();
 
@@ -53,7 +51,15 @@ app.get('/cliente', async(req, resp) => {
                         {
                             model: db.infoc_jdf_item_pedido,
                             as: "infoc_jdf_item_pedidos",
-                            required: false
+                            required: false,
+                            include: [
+                                {
+                                    model: db.infoc_jdf_produto,
+                                    as: "id_produto_infoc_jdf_produto",
+                                    require: true
+                                }
+                                
+                            ]
                         }
                     ]
                 }
